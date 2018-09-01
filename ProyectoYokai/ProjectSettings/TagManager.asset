@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fondo
+    uniqueID: 1842095485
+    locked: 0
+  - name: Estructuras
+    uniqueID: 1781448127
+    locked: 0
+  - name: Collider
+    uniqueID: 2555936567
+    locked: 0
+  - name: Player
+    uniqueID: 2588900849
     locked: 0
