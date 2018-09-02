@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Limite
+    uniqueID: 1131023047
+    locked: 0
+  - name: Fondo
+    uniqueID: 58355901
+    locked: 0
+  - name: Estructuras
+    uniqueID: 25152755
+    locked: 0
+  - name: "Decoraci\xF3n"
+    uniqueID: 1637525509
+    locked: 0
+  - name: Jugador
+    uniqueID: 96359327
+    locked: 0
