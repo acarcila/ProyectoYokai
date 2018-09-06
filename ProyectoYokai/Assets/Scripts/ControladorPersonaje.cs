@@ -7,10 +7,12 @@ public class ControladorPersonaje : MonoBehaviour {
 	public float velocidadCaminando;
     public float velocidadCorriendo;
     public float velocidadRodar;
+	public float cooldownRodar;
 
     private float movimientoVertical;
     private float movimientoHorizontal;
     private bool rodar;
+	private int frameCountRodar;
     private Vector2 posicionRodar;
     private Transform transformacion;
 
@@ -28,11 +30,11 @@ public class ControladorPersonaje : MonoBehaviour {
 		movimientoHorizontal = Input.GetAxis ("Horizontal");
 		movimientoVertical = Input.GetAxis ("Vertical");
 
+		activarRodar(movimientoHorizontal, movimientoVertical);
+		rodarPersonaje();
         correr();
-
-        activarRodar(movimientoHorizontal, movimientoVertical);
-        rodarPersonaje();
     }
+
 
     private void correr()
     {
@@ -51,12 +53,13 @@ public class ControladorPersonaje : MonoBehaviour {
 
     private void activarRodar(float x, float y)
     {
-        if (Input.GetButtonDown("Fire3") && !rodar)
+		if (Input.GetButtonDown("Fire3") && !rodar && frameCountRodar == 0)
         {
             rodar = true;
-            posicionRodar = new Vector2(posicionRodar.x + x, posicionRodar.y + y);
+            posicionRodar = new Vector2(posicionRodar.x + x*5f, posicionRodar.y + y*5f);
+			frameCountRodar++;
         }
-        else if (rodar)
+        else if (!rodar)
         {
             posicionRodar = transformacion.position;
         }
@@ -66,12 +69,24 @@ public class ControladorPersonaje : MonoBehaviour {
     {
         if (rodar)
         {
-            transformacion.position = Vector2.MoveTowards(transformacion.position, posicionRodar, 1000f * Time.deltaTime);
+			transformacion.position = Vector2.MoveTowards(transformacion.position, posicionRodar, velocidadRodar * Time.deltaTime);
         }
 
         if (transformacion.position.Equals(posicionRodar))
         {
             rodar = false;
         }
+
+		if(frameCountRodar > 0)
+		{
+			frameCountRodar++;
+		}
+
+		if(frameCountRodar > cooldownRodar * 60)
+		{
+			frameCountRodar = 0;
+		}
+
+		Debug.Log (frameCountRodar + ", " + (cooldownRodar*60));
     }
 }
