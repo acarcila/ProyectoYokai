@@ -86,7 +86,5 @@ public class ControladorPersonaje : MonoBehaviour {
 		{
 			frameCountRodar = 0;
 		}
-
-		Debug.Log (frameCountRodar + ", " + (cooldownRodar*60));
     }
 }
