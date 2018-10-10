@@ -297,6 +297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objetivo: {fileID: 1352520167}
   velocidad: 5
+  personaje: {fileID: 1352520167}
+  colliderAtaque: {fileID: 1465047753}
 --- !u!212 &1021336922
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -431,6 +433,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 61663730396680040, guid: 1b04ee9e44c9d6748854c16f515322ba,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b04ee9e44c9d6748854c16f515322ba, type: 2}
   m_IsPrefabAsset: 0
@@ -449,6 +456,7 @@ GameObject:
   - component: {fileID: 1465047754}
   - component: {fileID: 1465047755}
   - component: {fileID: 1465047756}
+  - component: {fileID: 1465047757}
   m_Layer: 0
   m_Name: ColliderAtaque
   m_TagString: Untagged
@@ -462,14 +470,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465047753}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 37494994}
   m_Father: {fileID: 1021336923}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!61 &1465047755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -513,3 +521,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1465047757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465047753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6ce4fe31b023e44bdbd39b61d01ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
