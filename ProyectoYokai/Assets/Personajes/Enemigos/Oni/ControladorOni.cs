@@ -18,7 +18,10 @@ public class ControladorOni : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
-	{
-		Debug.Log("atacar");
+	{	
+		if(other.gameObject.name == "Personaje")
+		{
+			
+		}
 	}
 }
