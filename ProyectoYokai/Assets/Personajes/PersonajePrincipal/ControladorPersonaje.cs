@@ -87,4 +87,9 @@ public class ControladorPersonaje : MonoBehaviour {
 			frameCountRodar = 0;
 		}
     }
+
+    public void morir()
+    {
+        Debug.Log("He morido");
+    }
 }
