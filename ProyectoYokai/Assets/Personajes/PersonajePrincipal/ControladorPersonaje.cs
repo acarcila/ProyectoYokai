@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class ControladorPersonaje : MonoBehaviour {
     public float velocidadCorriendo;
     public float velocidadRodar;
 	public float cooldownRodar;
+    public GameObject colliderAtaque;
 
     private float movimientoVertical;
     private float movimientoHorizontal;
@@ -22,6 +24,8 @@ public class ControladorPersonaje : MonoBehaviour {
         rodar = false;
         transformacion = GetComponent<Rigidbody2D>().transform;
         posicionRodar = transformacion.position;
+
+        colliderAtaque.SetActive(false);
     }
 
 	// Update is called once per frame
@@ -32,11 +36,28 @@ public class ControladorPersonaje : MonoBehaviour {
 
 		activarRodar(movimientoHorizontal, movimientoVertical);
 		rodarPersonaje();
-        correr();
+        inputCorrer();
+        inputGirar();
+        inputAtacar();
     }
 
+    private void inputAtacar()
+    {
+        float velocidad = 0f;
+        if (Input.GetButtonDown("Fire1"))
+        {
+            StartCoroutine(atacar());
+        }
+    }
 
-    private void correr()
+    private IEnumerator atacar()
+    {
+        colliderAtaque.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        colliderAtaque.SetActive(false);
+    }
+
+    private void inputCorrer()
     {
         float velocidad = 0f;
         if (Input.GetButton("Fire2"))
@@ -49,6 +70,26 @@ public class ControladorPersonaje : MonoBehaviour {
         }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(movimientoHorizontal * velocidad * Time.deltaTime, movimientoVertical * velocidad * Time.deltaTime);
+    }
+
+    private void inputGirar()
+    {
+        if(movimientoHorizontal > 0)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if(movimientoHorizontal < 0)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+        }
+        else if(movimientoVertical > 0)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        else if(movimientoVertical < 0)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
     }
 
     private void activarRodar(float x, float y)
@@ -90,6 +131,6 @@ public class ControladorPersonaje : MonoBehaviour {
 
     public void morir()
     {
-        Debug.Log("He morido");
+        Destroy(this.gameObject);
     }
 }
