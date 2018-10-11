@@ -9,14 +9,15 @@ public class ControladorOniColliderAtaque : MonoBehaviour {
 	{	
 		if(other.gameObject.name == "Personaje")
 		{
-			other.GetComponent<ControladorPersonaje>().morir();
 			StartCoroutine(reiniciarEscena());
+			other.GetComponent<ControladorPersonaje>().morir();
 		}
 	}
 	
 	private IEnumerator reiniciarEscena()
 	{
 		yield return new WaitForSeconds(1f);
+		Debug.Log("oni");
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
