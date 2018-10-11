@@ -9,14 +9,15 @@ public class ControladorPersonajeColliderAtaque : MonoBehaviour {
 	{	
 		if(other.gameObject.tag == "enemigo")
 		{
-			other.GetComponent<ControladorEnemigoVida>().reducirVida(1);
 			StartCoroutine(reiniciarEscena());
+			other.GetComponent<ControladorEnemigoVida>().reducirVida(1);
 		}
 	}
 
 	private IEnumerator reiniciarEscena()
 	{
 		yield return new WaitForSeconds(1f);
+		Debug.Log("Personaje");
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }
