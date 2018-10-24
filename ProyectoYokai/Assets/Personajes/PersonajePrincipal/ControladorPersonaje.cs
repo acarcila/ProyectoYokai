@@ -80,16 +80,16 @@ public class ControladorPersonaje : MonoBehaviour {
         }
         else if(movimientoHorizontal < 0)
         {
-            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        else if(movimientoVertical > 0)
-        {
-            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        else if(movimientoVertical < 0)
-        {
-            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
-        }
+        // else if(movimientoVertical > 0)
+        // {
+        //     this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+        // }
+        // else if(movimientoVertical < 0)
+        // {
+        //     this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
+        // }
     }
 
     private void activarRodar(float x, float y)
