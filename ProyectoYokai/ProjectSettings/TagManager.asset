@@ -58,3 +58,6 @@ TagManager:
   - name: Jugador
     uniqueID: 96359327
     locked: 0
+  - name: DecoracionEncimaPj
+    uniqueID: 2658110349
+    locked: 0
