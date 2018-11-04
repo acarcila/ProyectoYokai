@@ -10,6 +10,7 @@ public class ControladorPersonaje : MonoBehaviour {
     public float velocidadRodar;
 	public float cooldownRodar;
     public GameObject colliderAtaque;
+    public Animator anim;
 
     private float movimientoVertical;
     private float movimientoHorizontal;
@@ -33,10 +34,15 @@ public class ControladorPersonaje : MonoBehaviour {
     {
 		movimientoHorizontal = Input.GetAxis ("Horizontal");
 		movimientoVertical = Input.GetAxis ("Vertical");
+        anim.SetBool("IsRunning", false);
 
-		activarRodar(movimientoHorizontal, movimientoVertical);
+        activarRodar(movimientoHorizontal, movimientoVertical);
 		rodarPersonaje();
-        inputCorrer();
+        if (movimientoHorizontal != 0 || movimientoVertical != 0) 
+        {
+            inputCorrer();
+        }
+        
         inputGirar();
         inputAtacar();
     }
@@ -59,16 +65,18 @@ public class ControladorPersonaje : MonoBehaviour {
 
     private void inputCorrer()
     {
+        anim.SetFloat("AxisX", movimientoHorizontal);
+        anim.SetFloat("AxisY", movimientoVertical);
         float velocidad = 0f;
         if (Input.GetButton("Fire2"))
         {
+            anim.SetBool("IsRunning", true);
             velocidad = velocidadCorriendo;
         }
         else
         {
             velocidad = velocidadCaminando;
         }
-
         GetComponent<Rigidbody2D>().velocity = new Vector2(movimientoHorizontal * velocidad * Time.deltaTime, movimientoVertical * velocidad * Time.deltaTime);
     }
 
