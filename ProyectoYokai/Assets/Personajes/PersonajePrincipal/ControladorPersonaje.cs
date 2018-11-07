@@ -10,7 +10,7 @@ public class ControladorPersonaje : MonoBehaviour {
     public float velocidadRodar;
 	public float cooldownRodar;
     public GameObject colliderAtaque;
-    public Animator anim;
+    public Animator animPersonaje;
 
     private float movimientoVertical;
     private float movimientoHorizontal;
@@ -18,10 +18,13 @@ public class ControladorPersonaje : MonoBehaviour {
 	private int frameCountRodar;
     private Vector2 posicionRodar;
     private Transform transformacion;
+    private Animator animColliderAtaque;
 
     // Use this for initialization
     void Start ()
     {
+        animColliderAtaque = colliderAtaque.GetComponent<Animator>();
+
         rodar = false;
         transformacion = GetComponent<Rigidbody2D>().transform;
         posicionRodar = transformacion.position;
@@ -34,7 +37,7 @@ public class ControladorPersonaje : MonoBehaviour {
     {
 		movimientoHorizontal = Input.GetAxis ("Horizontal");
 		movimientoVertical = Input.GetAxis ("Vertical");
-        anim.SetBool("IsRunning", false);
+        animPersonaje.SetBool("IsRunning", false);
 
         activarRodar(movimientoHorizontal, movimientoVertical);
 		rodarPersonaje();
@@ -65,12 +68,12 @@ public class ControladorPersonaje : MonoBehaviour {
 
     private void inputCorrer()
     {
-        anim.SetFloat("AxisX", movimientoHorizontal);
-        anim.SetFloat("AxisY", movimientoVertical);
+        animPersonaje.SetFloat("AxisX", movimientoHorizontal);
+        animPersonaje.SetFloat("AxisY", movimientoVertical);
         float velocidad = 0f;
         if (Input.GetButton("Fire2"))
         {
-            anim.SetBool("IsRunning", true);
+            animPersonaje.SetBool("IsRunning", true);
             velocidad = velocidadCorriendo;
         }
         else
@@ -85,19 +88,21 @@ public class ControladorPersonaje : MonoBehaviour {
         if(movimientoHorizontal > 0)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            animColliderAtaque.SetInteger("DirAtaque", 0);
         }
         else if(movimientoHorizontal < 0)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            animColliderAtaque.SetInteger("DirAtaque", 0);
         }
-        // else if(movimientoVertical > 0)
-        // {
-        //     this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-        // }
-        // else if(movimientoVertical < 0)
-        // {
-        //     this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
-        // }
+        else if(movimientoVertical > 0)
+        {
+            animColliderAtaque.SetInteger("DirAtaque", 1);   
+        }
+        else if(movimientoVertical < 0)
+        {
+            animColliderAtaque.SetInteger("DirAtaque", 2);
+        }
     }
 
     private void activarRodar(float x, float y)
