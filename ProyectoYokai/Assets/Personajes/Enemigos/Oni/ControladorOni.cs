@@ -163,24 +163,24 @@ public class ControladorOni : MonoBehaviour {
 		{
 			if(diferenciaX > 0)
 			{
-				this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+				this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
 			}
 			else
 			{
 				this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 			}
 		}
-		else
-		{
-			if(diferenciaY > 0)
-			{
-				this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
-			}
-			else
-			{
-				this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-			}
-		}
+		// else
+		// {
+		// 	if(diferenciaY > 0)
+		// 	{
+		// 		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
+		// 	}
+		// 	else
+		// 	{
+		// 		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+		// 	}
+		// }
     }
 
 	private IEnumerator canalizar()
