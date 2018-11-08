@@ -9,7 +9,7 @@ public class ControladorPersonaje : MonoBehaviour {
     public float velocidadCorriendo;
     public float velocidadRodar;
 	public float cooldownRodar;
-    public GameObject colliderAtaque;
+    public ControladorPersonajeColliderAtaque colliderAtaque;
     public Animator animPersonaje;
 
     private float movimientoVertical;
@@ -18,18 +18,15 @@ public class ControladorPersonaje : MonoBehaviour {
 	private int frameCountRodar;
     private Vector2 posicionRodar;
     private Transform transformacion;
-    private Animator animColliderAtaque;
 
     // Use this for initialization
     void Start ()
     {
-        animColliderAtaque = colliderAtaque.GetComponent<Animator>();
-
         rodar = false;
         transformacion = GetComponent<Rigidbody2D>().transform;
         posicionRodar = transformacion.position;
 
-        colliderAtaque.SetActive(false);
+        colliderAtaque.setEstadoCollider(false);
     }
 
 	// Update is called once per frame
@@ -61,9 +58,9 @@ public class ControladorPersonaje : MonoBehaviour {
 
     private IEnumerator atacar()
     {
-        colliderAtaque.SetActive(true);
+        colliderAtaque.setEstadoCollider(true);
         yield return new WaitForSeconds(0.2f);
-        colliderAtaque.SetActive(false);
+        colliderAtaque.setEstadoCollider(false);
     }
 
     private void inputCorrer()
@@ -88,20 +85,20 @@ public class ControladorPersonaje : MonoBehaviour {
         if(movimientoHorizontal > 0)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            animColliderAtaque.SetInteger("DirAtaque", 0);
+            colliderAtaque.setColliderFrente();
         }
         else if(movimientoHorizontal < 0)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-            animColliderAtaque.SetInteger("DirAtaque", 0);
+            colliderAtaque.setColliderFrente();
         }
         else if(movimientoVertical > 0)
         {
-            animColliderAtaque.SetInteger("DirAtaque", 1);   
+            colliderAtaque.setColliderArriba();
         }
         else if(movimientoVertical < 0)
         {
-            animColliderAtaque.SetInteger("DirAtaque", 2);
+            colliderAtaque.setColliderAbajo();;
         }
     }
 
