@@ -11005,24 +11005,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1553439989043922, guid: 165833fd67e879546b3dd9ac17a24ed7,
     type: 2}
   m_PrefabInternal: {fileID: 1350310546}
---- !u!95 &757284908
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 757284901}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e0cc19e4bb3f2d1438f34f679c5bb4ae, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1193125435
 GameObject:
   m_ObjectHideFlags: 0
@@ -11670,50 +11652,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114262560760420432, guid: 165833fd67e879546b3dd9ac17a24ed7,
         type: 2}
-      propertyPath: objetivo
-      value: 
-      objectReference: {fileID: 1938950845}
-    - target: {fileID: 114262560760420432, guid: 165833fd67e879546b3dd9ac17a24ed7,
-        type: 2}
       propertyPath: personaje
       value: 
       objectReference: {fileID: 1938950845}
-    - target: {fileID: 212898165366485082, guid: 165833fd67e879546b3dd9ac17a24ed7,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a3cd9f2df6c875a4493d964557719f04,
-        type: 3}
-    - target: {fileID: 61762669908121290, guid: 165833fd67e879546b3dd9ac17a24ed7,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 61762669908121290, guid: 165833fd67e879546b3dd9ac17a24ed7,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 212898165366485082, guid: 165833fd67e879546b3dd9ac17a24ed7,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212898165366485082, guid: 165833fd67e879546b3dd9ac17a24ed7,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212898165366485082, guid: 165833fd67e879546b3dd9ac17a24ed7,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212898165366485082, guid: 165833fd67e879546b3dd9ac17a24ed7,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 165833fd67e879546b3dd9ac17a24ed7, type: 2}
   m_IsPrefabAsset: 0
