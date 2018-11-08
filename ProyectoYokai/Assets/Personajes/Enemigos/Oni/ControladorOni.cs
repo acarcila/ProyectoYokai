@@ -14,7 +14,8 @@ public class ControladorOni : MonoBehaviour {
 	public float velocidadEmbestida;
 	public float tiempoMaximoEstuneado;
 	private Animator animatorColliderAtaque;
-	public enum Estados {caminando, atacando, embistiendo, estuneado};
+    public Animator animOniMovimiento;
+    public enum Estados {caminando, atacando, embistiendo, estuneado};
 	public enum EstadosEmbestida {canalizando, embistiendo, estuneado};
     private Estados estado;
 	public EstadosEmbestida estadoEmbestida;
@@ -96,7 +97,8 @@ public class ControladorOni : MonoBehaviour {
 
 		if(estado == Estados.embistiendo)
 		{
-			colliderEmbestida.SetActive(true);
+            animOniMovimiento.SetBool("IsRunning", false);
+            colliderEmbestida.SetActive(true);
 
 			if(estadoEmbestida == EstadosEmbestida.canalizando)
 			{
@@ -158,29 +160,32 @@ public class ControladorOni : MonoBehaviour {
         Vector3 vectorDiferencia = transform.position-personaje.transform.position;
 		float diferenciaX = vectorDiferencia.x;
 		float diferenciaY = vectorDiferencia.y;
+        animOniMovimiento.SetBool("IsRunning", true);
+        animOniMovimiento.SetFloat("AxisX", diferenciaX);
+        animOniMovimiento.SetFloat("AxisY", diferenciaY);
 
-		if((Mathf.Abs(diferenciaX) - Mathf.Abs(diferenciaY)) > 0) 
-		{
-			if(diferenciaX > 0)
-			{
-				this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-			}
-			else
-			{
-				this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-			}
-		}
-		// else
-		// {
-		// 	if(diferenciaY > 0)
-		// 	{
-		// 		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
-		// 	}
-		// 	else
-		// 	{
-		// 		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-		// 	}
-		// }
+        //if((Mathf.Abs(diferenciaX) - Mathf.Abs(diferenciaY)) > 0) 
+        //{
+        //	if(diferenciaX > 0)
+        //	{
+        //		this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+        //	}
+        //	else
+        //	{
+        //		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //	}
+        //}
+        // else
+        // {
+        // 	if(diferenciaY > 0)
+        // 	{
+        // 		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
+        // 	}
+        // 	else
+        // 	{
+        // 		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+        // 	}
+        // }
     }
 
 	private IEnumerator canalizar()

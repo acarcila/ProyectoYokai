@@ -11005,6 +11005,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1553439989043922, guid: 165833fd67e879546b3dd9ac17a24ed7,
     type: 2}
   m_PrefabInternal: {fileID: 1350310546}
+--- !u!95 &757284902 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95830045847348962, guid: 165833fd67e879546b3dd9ac17a24ed7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1350310546}
 --- !u!1 &1193125435
 GameObject:
   m_ObjectHideFlags: 0
@@ -11655,6 +11660,16 @@ Prefab:
       propertyPath: personaje
       value: 
       objectReference: {fileID: 1938950845}
+    - target: {fileID: 114262560760420432, guid: 165833fd67e879546b3dd9ac17a24ed7,
+        type: 2}
+      propertyPath: animOniMovimiento
+      value: 
+      objectReference: {fileID: 757284902}
+    - target: {fileID: 212898165366485082, guid: 165833fd67e879546b3dd9ac17a24ed7,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 165833fd67e879546b3dd9ac17a24ed7, type: 2}
   m_IsPrefabAsset: 0
