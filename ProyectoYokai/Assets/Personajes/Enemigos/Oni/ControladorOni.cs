@@ -15,6 +15,7 @@ public class ControladorOni : MonoBehaviour {
 	public float tiempoMaximoEstuneado;
 	private Animator animatorColliderAtaque;
     public Animator animOniMovimiento;
+	public Animator animOniDireccionAtaque;
     public enum Estados {caminando, atacando, embistiendo, estuneado};
 	public enum EstadosEmbestida {canalizando, embistiendo, estuneado};
     private Estados estado;
@@ -164,28 +165,25 @@ public class ControladorOni : MonoBehaviour {
         animOniMovimiento.SetFloat("AxisX", diferenciaX);
         animOniMovimiento.SetFloat("AxisY", diferenciaY);
 
-        //if((Mathf.Abs(diferenciaX) - Mathf.Abs(diferenciaY)) > 0) 
-        //{
-        //	if(diferenciaX > 0)
-        //	{
-        //		this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-        //	}
-        //	else
-        //	{
-        //		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-        //	}
-        //}
-        // else
-        // {
-        // 	if(diferenciaY > 0)
-        // 	{
-        // 		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
-        // 	}
-        // 	else
-        // 	{
-        // 		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-        // 	}
-        // }
+        if((Mathf.Abs(diferenciaX) - Mathf.Abs(diferenciaY)) > 0) 
+        {
+        	if(diferenciaX > 0)
+        	{
+        		this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+        	}
+        	else
+        	{
+        		this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        	}
+
+			animOniDireccionAtaque.SetFloat("AxisX", diferenciaX);
+			animOniDireccionAtaque.SetFloat("AxisY", 0.0f);
+        }
+        else
+        {
+			animOniDireccionAtaque.SetFloat("AxisX", 0.0f);
+			animOniDireccionAtaque.SetFloat("AxisY", diferenciaY);
+        }
     }
 
 	private IEnumerator canalizar()
