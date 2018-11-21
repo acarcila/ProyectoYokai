@@ -57698,6 +57698,16 @@ Prefab:
       propertyPath: personaje
       value: 
       objectReference: {fileID: 1938950845}
+    - target: {fileID: 61762669908121290, guid: 165833fd67e879546b3dd9ac17a24ed7,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50973014768247860, guid: 165833fd67e879546b3dd9ac17a24ed7,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 165833fd67e879546b3dd9ac17a24ed7, type: 2}
   m_IsPrefabAsset: 0
