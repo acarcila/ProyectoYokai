@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ControladorPersonaje : MonoBehaviour {
 
-	public float velocidadCaminando;
+    public float velocidadCaminando;
     public float velocidadCorriendo;
     public float velocidadRodar;
 	public float cooldownRodar;
