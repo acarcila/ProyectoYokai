@@ -5,6 +5,7 @@ using UnityEngine;
 public class ControladorEnemigoVida : MonoBehaviour {
 
 	public int vida;
+	public GameObject puente;
 
 	public void reducirVida(int daño)
 	{
@@ -18,6 +19,12 @@ public class ControladorEnemigoVida : MonoBehaviour {
 
     private void morir()
     {
+		activarPuente();
         Destroy(this.gameObject);
     }
+
+	public void activarPuente()
+	{
+		puente.SetActive(true);
+	}
 }
