@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/MenuInicial.unity
+    guid: fd4010b8e9b6d9a40b19ad1b0a8f7b7f
+  - enabled: 1
     path: Assets/Scenes/MecanicasPrimitivas.unity
     guid: f618d6dde02e5924dac4e1f6d855e81b
+  - enabled: 1
+    path: Assets/Scenes/SegundoYokai.unity
+    guid: 8a9104071843a0b469014056985b9228
   m_configObjects: {}
