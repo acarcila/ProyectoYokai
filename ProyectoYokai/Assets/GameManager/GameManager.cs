@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	public GameObject oni;
-	public GameObject personaje;
-	private ControladorOni controladorOni;
+	public int cantidadMagatamas;
 
+	void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameController");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+	
 	// Use this for initialization
 	void Start () {
-		controladorOni = oni.GetComponent<ControladorOni>();
 	}
 	
 	// Update is called once per frame
@@ -19,5 +28,10 @@ public class GameManager : MonoBehaviour {
 		{
 			Application.Quit();
 		}
+	}
+
+	public void aumentarMagatamas(int cantidadMagatamas)
+	{
+		this.cantidadMagatamas += cantidadMagatamas;
 	}
 }
