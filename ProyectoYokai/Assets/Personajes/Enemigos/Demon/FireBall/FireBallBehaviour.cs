@@ -21,6 +21,13 @@ public class FireBallBehaviour : MonoBehaviour
         this.GetComponent<Rigidbody2D>().velocity = direccion * velocidad;
     }
 
+    private IEnumerator reiniciarEscena()
+	{
+		yield return new WaitForSeconds(1f);
+		Debug.Log("oni");
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "Personaje")
@@ -29,16 +36,10 @@ public class FireBallBehaviour : MonoBehaviour
             other.GetComponent<ControladorPersonaje>().morir();
         }
 
-		if(other.gameObject.tag != "enemigo" && other.gameObject.tag != "fireBall")
+		if(other.gameObject.tag != "enemigo" && other.gameObject.tag != "fireBall" && other.gameObject.tag != "limites")
 		{
 			Destroy(this.gameObject);
 		}
     }
-
-	private IEnumerator reiniciarEscena()
-	{
-		yield return new WaitForSeconds(1f);
-		Debug.Log("oni");
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
+	
 }
