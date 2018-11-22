@@ -9,6 +9,7 @@ public class ControladorPersonaje : MonoBehaviour {
     public float velocidadCorriendo;
     public float velocidadRodar;
 	public float cooldownRodar;
+    public float cooldownMaximoAtaque;
     public ControladorPersonajeColliderAtaque colliderAtaque;
     public Animator animPersonaje;
 
@@ -16,6 +17,8 @@ public class ControladorPersonaje : MonoBehaviour {
     private float movimientoHorizontal;
     private bool rodar;
 	private int frameCountRodar;
+    private bool ataque;
+	private float cooldownAtaque;
     private Vector2 posicionRodar;
     private Transform transformacion;
 
@@ -23,6 +26,8 @@ public class ControladorPersonaje : MonoBehaviour {
     void Start ()
     {
         rodar = false;
+        ataque = false;
+        cooldownAtaque = cooldownMaximoAtaque;
         transformacion = GetComponent<Rigidbody2D>().transform;
         posicionRodar = transformacion.position;
 
@@ -50,9 +55,22 @@ public class ControladorPersonaje : MonoBehaviour {
     private void inputAtacar()
     {
         float velocidad = 0f;
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && ataque)
         {
+            ataque = false;
             StartCoroutine(atacar());
+
+        }
+
+        if(!ataque)
+        {
+            cooldownAtaque -= Time.deltaTime;
+        }
+
+        if(cooldownAtaque <= 0)
+        {
+            cooldownAtaque = cooldownMaximoAtaque;
+            ataque = true;
         }
     }
 
